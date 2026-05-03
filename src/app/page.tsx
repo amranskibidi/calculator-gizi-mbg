@@ -3,15 +3,12 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { menuData, kategoriList, kategoriColor, OPERATIONAL_COST, MenuItem } from "@/data/menu";
 
-// ── Types ──────────────────────────────────────────────────────────────────
 type TrayItem = MenuItem & { trayId: string };
 
-// ── Helpers ────────────────────────────────────────────────────────────────
 function formatRp(n: number) {
   return "Rp " + n.toLocaleString("id-ID");
 }
 
-// ── NutritionBar ───────────────────────────────────────────────────────────
 function NutritionBar({ label, value, unit, color, max }: {
   label: string; value: number; unit: string; color: string; max: number;
 }) {
@@ -32,7 +29,6 @@ function NutritionBar({ label, value, unit, color, max }: {
   );
 }
 
-// ── MenuCard ───────────────────────────────────────────────────────────────
 function MenuCard({ item, onDragStart, onAdd }: {
   item: MenuItem;
   onDragStart: (e: React.DragEvent, item: MenuItem) => void;
@@ -66,10 +62,10 @@ function MenuCard({ item, onDragStart, onAdd }: {
   );
 }
 
-// ── TraySlot ───────────────────────────────────────────────────────────────
 function TraySlot({ item, onRemove, index }: {
   item: TrayItem; onRemove: (trayId: string) => void; index: number;
-}) {
+})
+ {
   const color = kategoriColor[item.kategori] || "#2563eb";
   return (
     <div
@@ -87,10 +83,65 @@ function TraySlot({ item, onRemove, index }: {
         title="Hapus"
       >×</button>
     </div>
+
   );
 }
 
-// ── Main Component ─────────────────────────────────────────────────────────
+function TrayVisual({ isEmpty }: { isEmpty: boolean }) {
+  return (
+    <svg viewBox="0 0 320 200" width="100%" style={{ display: "block", marginBottom: 12 }}>
+      {}
+      <rect x="10" y="20" width="300" height="165" rx="14"
+        fill={isEmpty ? "#d0dce8" : "#c8d8e8"} stroke="#8899aa" strokeWidth="2.5"/>
+      {}
+      <rect x="10" y="20" width="300" height="8" rx="8" fill="#edf2f8" opacity="0.9"/>
+      {}
+      <rect x="18" y="115" width="284" height="4" rx="2" fill="#aabbcc" opacity="0.7"/>
+      {}
+      <rect x="160" y="28" width="4" height="90" rx="2" fill="#aabbcc" opacity="0.7"/>
+      {}
+      <rect x="113" y="119" width="4" height="62" rx="2" fill="#aabbcc" opacity="0.7"/>
+      <rect x="207" y="119" width="4" height="62" rx="2" fill="#aabbcc" opacity="0.7"/>
+      {}
+      <rect x="10" y="20" width="300" height="165" rx="14"
+        fill="none" stroke="#6a7f90" strokeWidth="3"/>
+      {}
+      <path d="M28 23 Q160 18 292 23" fill="none" stroke="white" strokeWidth="1.5" opacity="0.7"/>
+      {}
+      {isEmpty ? (
+        <text x="160" y="108" textAnchor="middle" fontSize="11" fill="#8899aa" fontStyle="italic">
+          Drag makanan ke sini...
+        </text>
+      ) : null}
+      <text x="85" y="74" textAnchor="middle" fontSize="9" fill="#5577aa" opacity="0.7">Karbohidrat</text>
+      <text x="235" y="74" textAnchor="middle" fontSize="9" fill="#5577aa" opacity="0.7">Lauk</text>
+      <text x="60" y="150" textAnchor="middle" fontSize="8" fill="#5577aa" opacity="0.7">Sayur</text>
+      <text x="157" y="150" textAnchor="middle" fontSize="8" fill="#5577aa" opacity="0.7">Tempe/Tahu</text>
+      <text x="254" y="150" textAnchor="middle" fontSize="8" fill="#5577aa" opacity="0.7">Buah</text>
+    </svg>
+  );
+}
+
+function Footer() {
+  return (
+    <footer style={{
+      marginTop: 32, padding: "16px 0 8px",
+      borderTop: "2px solid var(--accent-blue)",
+      textAlign: "center",
+    }}>
+      <div style={{ fontSize: 10, color: "var(--text-muted)", letterSpacing: 2, marginBottom: 4, fontWeight: 700 }}>
+        MBG CALCULATOR
+      </div>
+      <div style={{ fontSize: 13, color: "var(--text-secondary)" }}>
+        Made with <span style={{ color: "#ff6688" }}>❤</span> by{" "}
+        <span style={{ color: "var(--accent-cyan)", fontWeight: 800, letterSpacing: 0.5 }}>
+          amranskibidi
+        </span>
+      </div>
+    </footer>
+  );
+}
+
 export default function MBGCalculator() {
   const [dark, setDark] = useState(false);
   const [tray, setTray] = useState<TrayItem[]>([]);
@@ -105,14 +156,12 @@ export default function MBGCalculator() {
     document.documentElement.classList.toggle("dark", dark);
   }, [dark]);
 
-  // Filter menu
   const filtered = menuData.filter((m) => {
     const matchKat = kategori === "Semua" || m.kategori === kategori;
     const matchSearch = m.name.toLowerCase().includes(search.toLowerCase());
     return matchKat && matchSearch;
   });
 
-  // Totals
   const totKalori = tray.reduce((s, i) => s + i.kalori, 0);
   const totProtein = tray.reduce((s, i) => s + i.protein, 0);
   const totKarbo = tray.reduce((s, i) => s + i.karbo, 0);
@@ -130,7 +179,6 @@ export default function MBGCalculator() {
 
   const clearTray = () => setTray([]);
 
-  // Drag handlers
   const handleDragStart = (e: React.DragEvent, item: MenuItem) => {
     dragItem.current = item;
     e.dataTransfer.effectAllowed = "copy";
@@ -546,7 +594,7 @@ export default function MBGCalculator() {
         </div>
 
         <div className="app-inner">
-          {/* Header */}
+          {}
           <header className="header">
             <div className="header-brand">
               <div className="header-logo">🍱</div>
@@ -562,9 +610,9 @@ export default function MBGCalculator() {
             </button>
           </header>
 
-          {/* Main */}
+          {}
           <div className="main-grid">
-            {/* Left: Menu */}
+            {}
             <div className="panel">
               <div className="panel-header">
                 <div className="panel-title">
@@ -616,9 +664,9 @@ export default function MBGCalculator() {
               </div>
             </div>
 
-            {/* Right: Tray + Summary */}
+            {}
             <div className="tray-panel">
-              {/* Drop zone */}
+              {}
               <div
                 className={`drop-zone ${dragOver ? "active" : ""}`}
                 onDragOver={handleDragOver}
@@ -656,7 +704,7 @@ export default function MBGCalculator() {
                 )}
               </div>
 
-              {/* Summary */}
+              {}
               <div className="summary-card">
                 <div className="summary-title">
                   <span className="summary-title-dot" />
