@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "MBG Calculator – Hitung Gizi & Biaya",
-  description: "Kalkulator gizi dan harga menu Makan Bergizi Gratis dengan drag & drop ompreng digital",
+  description: "Kalkulator gizi dan harga menu Makan Bergizi Gratis dengan drag & drop ompreng digital Tanpa biaya",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

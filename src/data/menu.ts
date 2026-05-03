@@ -6,7 +6,7 @@ export type MenuItem = {
 export const OPERATIONAL_COST = 5000;
 
 export const menuData: MenuItem[] = [
-  { id: "tahu-rebus", name: "Tahu Rebus", kalori: 80, protein: 8, karbo: 2, lemak: 5, harga: 1500, kategori: "Sayuran & Rebus", emoji: "🟨" },
+  { id: "tahu-rebus", name: "Tahu Rebus", kalori: 80, protein: 8, karbo: 2, lemak: 5, harga: 1500, kategori: "Sayuran & Rebus", emoji: "⬜" },
   { id: "tempe-kukus", name: "Tempe Kukus", kalori: 150, protein: 14, karbo: 8, lemak: 8, harga: 2000, kategori: "Sayuran & Rebus", emoji: "🟫" },
   { id: "bayam-bening", name: "Sayur Bayam Bening", kalori: 40, protein: 2, karbo: 6, lemak: 1, harga: 1500, kategori: "Sayuran & Rebus", emoji: "🥬" },
   { id: "buncis-rebus", name: "Buncis Rebus", kalori: 45, protein: 2, karbo: 8, lemak: 0, harga: 1500, kategori: "Sayuran & Rebus", emoji: "🫘" },

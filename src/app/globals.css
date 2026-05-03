@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap');
 
 @tailwind base;
@@ -67,17 +66,14 @@ body {
   overflow-x: hidden;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg-secondary); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent-blue); }
 
-/* Dragging */
 [draggable="true"] { cursor: grab; }
 [draggable="true"]:active { cursor: grabbing; }
 
-/* Noise texture overlay */
 .noise::before {
   content: '';
   position: fixed;
@@ -88,13 +84,11 @@ body {
   opacity: 0.4;
 }
 
-/* Grid dots background */
 .grid-bg {
   background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
-/* Glassmorphism */
 .glass {
   background: rgba(255,255,255,0.7);
   backdrop-filter: blur(12px);
@@ -105,7 +99,6 @@ body {
   background: rgba(9,21,48,0.7);
 }
 
-/* Glow effect */
 .glow {
   box-shadow: 0 0 20px rgba(37,99,235,0.3), 0 0 60px rgba(37,99,235,0.1);
 }
@@ -114,7 +107,6 @@ body {
   box-shadow: 0 0 20px rgba(59,130,246,0.4), 0 0 60px rgba(59,130,246,0.15);
 }
 
-/* Pulse animation */
 @keyframes pulse-ring {
   0% { transform: scale(0.8); opacity: 1; }
   100% { transform: scale(1.4); opacity: 0; }
