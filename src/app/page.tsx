@@ -403,7 +403,7 @@ function MenuCard({ item, onDragStart, onAdd }: {
         {item.name}
       </div>
       <div style={{ display:"flex", alignItems:"center", gap:4, fontSize:10, fontWeight:700 }}>
-        <span style={{ color, fontFamily:"'Fredoka One',cursive" }}>{item.kalori} kal</span>
+        <span style={{ color: col, fontFamily:"'Fredoka One',cursive" }}>{item.kalori} kal</span>
         <span style={{ color:"var(--text-muted)" }}>·</span>
         <span style={{ color:"var(--text-muted)" }}>{formatRp(item.harga)}</span>
       </div>
